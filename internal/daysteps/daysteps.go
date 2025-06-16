@@ -49,13 +49,7 @@ func parsePackage(data string) (int, time.Duration, error) {
 func DayActionInfo(data string, weight, height float64) string {
 	stepUser, durationUser, err := parsePackage(data)
 	if err != nil {
-		log.Println("error")
-	}
-	if stepUser <= 0 {
-		log.Println("error")
-	}
-	if data == "" {
-		log.Println("error")
+		log.Println("parsing error")
 	}
 
 	distanceUser := float64(stepUser) * stepLength
