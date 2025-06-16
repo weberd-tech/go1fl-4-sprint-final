@@ -3,6 +3,7 @@ package daysteps
 import (
 	"errors"
 	"fmt"
+	"log"
 	"strconv"
 	"strings"
 	"time"
@@ -16,7 +17,6 @@ const (
 	// Количество метров в одном километре
 	mInKm = 1000
 )
-
 
 func parsePackage(data string) (int, time.Duration, error) {
 	sliceData := strings.Split(data, ",")
@@ -49,10 +49,13 @@ func parsePackage(data string) (int, time.Duration, error) {
 func DayActionInfo(data string, weight, height float64) string {
 	stepUser, durationUser, err := parsePackage(data)
 	if err != nil {
-		return ""
+		log.Println("error")
 	}
 	if stepUser <= 0 {
-		return ""
+		log.Println("error")
+	}
+	if data == "" {
+		log.Println("error")
 	}
 
 	distanceUser := float64(stepUser) * stepLength
